@@ -1,8 +1,13 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+
     <div id="card">
         <div id="inner">
             <p>Antalet unika ip-addresser:</p>
+            <p id="unique_ips"></p>
         </div>
     </div>
 </html>
@@ -32,3 +37,24 @@
     }
 
 </style>
+
+<script>
+    const server_url = "http://localhost:3000"
+
+    const httpGetAsync = (url, callback) => {
+        const xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = () => {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                callback(xmlHttp.responseText);
+            };
+        };
+
+        xmlHttp.open("GET", url, true);
+        xmlHttp.send(null);
+    };
+
+    httpGetAsync(server_url, (res) => {
+        document.getElementById("unique_ips").innerHTML = JSON.parse(res).unique_ips;
+    });
+
+</script>
