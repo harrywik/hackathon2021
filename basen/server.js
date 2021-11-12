@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const db = require('./db');
 
 app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', ['*']);
@@ -13,13 +14,20 @@ app.get("/", (req, res) => {
 
     const {exec} = require('child_process');
 
-    exec("arp -a | wc -l", (err, stdout, _) => {
+    exec("arp -a | wc -l", async (err, stdout, _) => {
         if (err) {
             console.log(err);
         } else {
+            const unique_ips = Number(stdout.replace("\n", ""));
             res.send(JSON.stringify({
-                    unique_ips: stdout.replace("\n", ""),
+                    unique_ips: unique_ips,
             }));
+
+            try {
+                const result = await db.pool.query("INSERT INTO unique_ips (n_unique) VALUES (?)", unique_ips);
+            } catch (err){
+                console.log(err);
+            };
         };
     });
 });
