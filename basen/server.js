@@ -11,7 +11,7 @@ app.use((req, res, next) => {
     next();
 });
 
-cron.schedule("* 10 * * * * *", () => {
+cron.schedule("0 */5 * * * * *", () => {
     const {exec} = require('child_process');
     
     exec("arp -a | wc -l", async (err, stdout, _) => {
