@@ -13,7 +13,7 @@ const httpGetAsync = (url, callback) => {
 };
 
 httpGetAsync(server_url, (res) => {
-    const unique_ips = JSON.parse(res).unique_ips;
+    const unique_ips = JSON.parse(res).n_unique;
     
     let description = "";
     let color = "white";
