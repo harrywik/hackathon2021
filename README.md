@@ -10,5 +10,5 @@ Skapa användbart tillägg för dtek.se
 
 På hemsidan återge hur många som befinner sig i Datateknologernas lokal Basen
 
-Detta mha kontinueliga arp-requests till basens accesspunkter
+Detta mha kontinueliga arp-requests till basens accesspunkter,
 antalet MAC addresser uppkopplade motsvarar antalet besökare (ungefär)
