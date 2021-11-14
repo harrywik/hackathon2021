@@ -1,4 +1,4 @@
-const server_url = "http://localhost:3000"
+const server_url = "https://86e6-129-16-39-44.ngrok.io"
 
 const httpGetAsync = (url, callback) => {
     const xmlHttp = new XMLHttpRequest();
