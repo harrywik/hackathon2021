@@ -18,12 +18,12 @@ httpGetAsync(server_url, (res) => {
     let description = "";
     let color = "white";
 
-    if (unique_ips < 40){
+    if (unique_ips < 25){
 
         description = "lite folk";
         color = "green";
 
-    } else if (unique_ips >= 40 && unique_ips < 80){
+    } else if (unique_ips >= 25 && unique_ips <60){
         
         description = "mellan mycket folk";
         color = "yellow";
