@@ -1,4 +1,4 @@
-const server_url = "https://d333-129-16-39-44.ngrok.io"
+const server_url = "http://localhost:3000"
 
 const httpGetAsync = (url, callback) => {
     const xmlHttp = new XMLHttpRequest();
@@ -15,25 +15,21 @@ const httpGetAsync = (url, callback) => {
 httpGetAsync(server_url, (res) => {
     const unique_ips = JSON.parse(res).n_unique;
     
-    let description = "";
-    let color = "white";
+    let img = "";
 
     if (unique_ips < 25){
 
-        description = "lite folk";
-        color = "green";
+        img = "gron.png";
 
     } else if (unique_ips >= 25 && unique_ips <60){
         
-        description = "mellan mycket folk";
-        color = "yellow";
+        img = "gul.png";
 
     } else {
+
+        img = "rod.png";
         
-        description = "mycket folk";
-        color = "red";
     };
 
-    document.getElementById("description").innerHTML = description;
-    document.getElementById("color").style.backgroundColor = color;
+    document.getElementById("hacke").src = img;
 });
